@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -28,9 +27,11 @@ import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getFinancingOpportunities } from "@/lib/data-service";
+import { AddFinancingForm } from "@/components/forms/AddFinancingForm";
 
 const Financing = () => {
   const opportunities = getFinancingOpportunities();
+  const [isAddFinancingDialogOpen, setIsAddFinancingDialogOpen] = useState(false);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -124,7 +125,7 @@ const Financing = () => {
               Importer
             </Link>
           </Button>
-          <Button>
+          <Button onClick={() => setIsAddFinancingDialogOpen(true)}>
             <PlusCircle className="mr-2 h-4 w-4" />
             Nouvelle demande
           </Button>
@@ -393,6 +394,11 @@ const Financing = () => {
           </Button>
         </CardFooter>
       </Card>
+
+      <AddFinancingForm 
+        open={isAddFinancingDialogOpen} 
+        onOpenChange={setIsAddFinancingDialogOpen}
+      />
     </div>
   );
 };

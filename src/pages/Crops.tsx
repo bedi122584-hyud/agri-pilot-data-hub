@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -26,9 +25,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getCrops } from "@/lib/data-service";
+import { AddCropForm } from "@/components/forms/AddCropForm";
 
 const Crops = () => {
   const crops = getCrops();
+  const [isAddCropDialogOpen, setIsAddCropDialogOpen] = useState(false);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -88,7 +89,7 @@ const Crops = () => {
               Importer
             </Link>
           </Button>
-          <Button>
+          <Button onClick={() => setIsAddCropDialogOpen(true)}>
             <Plus className="mr-2 h-4 w-4" />
             Ajouter une culture
           </Button>
@@ -271,6 +272,11 @@ const Crops = () => {
           </CardFooter>
         </Card>
       </div>
+
+      <AddCropForm 
+        open={isAddCropDialogOpen} 
+        onOpenChange={setIsAddCropDialogOpen}
+      />
     </div>
   );
 };

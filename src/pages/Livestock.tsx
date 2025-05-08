@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -33,9 +32,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getLivestock } from "@/lib/data-service";
+import { AddLivestockForm } from "@/components/forms/AddLivestockForm";
 
 const Livestock = () => {
   const livestock = getLivestock();
+  const [isAddLivestockDialogOpen, setIsAddLivestockDialogOpen] = useState(false);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -125,7 +126,7 @@ const Livestock = () => {
               Importer
             </Link>
           </Button>
-          <Button>
+          <Button onClick={() => setIsAddLivestockDialogOpen(true)}>
             <Plus className="mr-2 h-4 w-4" />
             Ajouter un groupe
           </Button>
@@ -400,6 +401,11 @@ const Livestock = () => {
           </Button>
         </CardFooter>
       </Card>
+
+      <AddLivestockForm 
+        open={isAddLivestockDialogOpen} 
+        onOpenChange={setIsAddLivestockDialogOpen}
+      />
     </div>
   );
 };
