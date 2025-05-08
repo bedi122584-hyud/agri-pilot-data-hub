@@ -27,8 +27,9 @@ import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Settings, User, CloudIcon, Bot, Bell } from "lucide-react";
+import { Settings, User, CloudIcon, Bot, Bell, FileText } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 const profileFormSchema = z.object({
   name: z

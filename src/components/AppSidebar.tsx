@@ -101,7 +101,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    active={isActive(item.url)}
+                    isActive={isActive(item.url)}
                     className={isActive(item.url) ? "bg-primary/10" : ""}
                   >
                     <Link to={item.url} className="flex items-center">
@@ -123,7 +123,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    active={isActive(item.url)}
+                    isActive={isActive(item.url)}
                     className={isActive(item.url) ? "bg-primary/10" : ""}
                   >
                     <Link to={item.url} className="flex items-center">

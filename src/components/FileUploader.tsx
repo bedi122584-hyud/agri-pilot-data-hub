@@ -141,11 +141,10 @@ export function FileUploader({
 
         setProgress(100);
         
-        // Show success toast
+        // Show success toast - fixed by removing icon property
         toast({
           title: "Fichiers téléchargés avec succès",
-          description: `${validFiles.length} fichier(s) analysé(s) et prêt(s) à être utilisé(s).`,
-          icon: <CheckCircle2 className="h-5 w-5 text-green-500" />
+          description: `${validFiles.length} fichier(s) analysé(s) et prêt(s) à être utilisé(s).`
         });
 
         // Reset progress after a delay
@@ -158,11 +157,11 @@ export function FileUploader({
         console.error("File upload error:", error);
         setIsUploading(false);
         
+        // Fixed by removing icon property
         toast({
           variant: "destructive",
           title: "Erreur lors de l'analyse",
-          description: "Une erreur est survenue pendant l'analyse des fichiers. Veuillez réessayer.",
-          icon: <AlertTriangle className="h-5 w-5 text-destructive" />
+          description: "Une erreur est survenue pendant l'analyse des fichiers. Veuillez réessayer."
         });
       }
     }
